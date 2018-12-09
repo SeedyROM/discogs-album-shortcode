@@ -4,6 +4,8 @@ Plugin Name:    Discogs Album Shortcode
 Author:         Zack Kollar (github.com/SeedyROM || me@seedyrom.io)
 License:        GPL2
 */
-include(plugin_dir_url(__FILE__) . 'shortcode.php');
-register_activation_hook()
+
+// Register the plugin's activation hook.
+register_activation_hook(plugin_dir_url(__FILE__) . 'hooks/activation.php', 'install_plugin');
+
 ?>
