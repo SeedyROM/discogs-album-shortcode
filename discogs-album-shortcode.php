@@ -1,11 +1,15 @@
 <?php
 /*
 Plugin Name:    Discogs Album Shortcode
-Author:         Zack Kollar (github.com/SeedyROM || me@seedyrom.io)
+Plugin URI:     https://github.com/SeedyROM/discogs-album-shortcode
+Description:    An easy to use shortcode to embed discogs album components into a page. 
+Author:         Zack Kollar
+Author URI:     http://seedyrom.io
 License:        GPL2
 */
 
-// Register the plugin's activation hook.
-register_activation_hook(plugin_dir_url(__FILE__) . 'hooks/activation.php', 'install_plugin');
+// Include the discogs-album shortcode.
+include('shortcodes/album.php');
+add_shortcode('discogs-album', 'discogs_album_shortcode');
 
 ?>
