@@ -2,7 +2,7 @@
 /*
 Plugin Name:    Discogs Album Shortcode
 Plugin URI:     https://github.com/SeedyROM/discogs-album-shortcode
-Description:    An easy to use shortcode to embed discogs album components into a page. 
+Description:    An easy to use shortcode to embed discogs albums into a page. 
 Author:         Zack Kollar
 Author URI:     http://seedyrom.io
 License:        GPL2
