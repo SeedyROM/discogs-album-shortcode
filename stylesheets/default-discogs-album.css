@@ -28,6 +28,10 @@
     height: 100%;
 }
 
+.discogs-album img {
+    width: 100%;
+}
+
 .discogs-album a,
 .discogs-album a:active,
 .discogs-album a:visited {
