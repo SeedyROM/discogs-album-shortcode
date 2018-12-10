@@ -50,18 +50,18 @@ HTML;
 function discogs_album_shortcode($_attributes) {
     // Set defaults
     $attributes = shortcode_atts(array(
-        'id' => null,
+        'release' => null,
         'size' => null
     ), $_attributes);
 
-    if($attributes['id'] == null) {
-        return shortcode_error('ID required');
+    if($attributes['release'] == null) {
+        return shortcode_error('Release ID required');
     }
 
-    $album = query_discogs_api($attributes['id']);
+    $album = query_discogs_api($attributes['release']);
 
     if($album == null) {
-        return shortcode_error('Invalid discogs ID');
+        return shortcode_error('Invalid discogs release ID');
     }
 
     return render_html($attributes, $album);
