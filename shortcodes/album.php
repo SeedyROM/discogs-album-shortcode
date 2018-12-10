@@ -9,7 +9,7 @@ function shortcode_error($error) {
 
 function query_discogs_api($id) {
     $uri = 'https://api.discogs.com/releases/' . $id;
-    $token = 'RWqNCECRMOOEGGqrvhHxoYDmIWCqRVEbuNTJyMgG';
+    $token = 'RWqNCECRMOOEGGqrvhHxoYDmIWCqRVEbuNTJyMgG'; // Replace me!
 
     $request = wp_remote_get($uri, array(
         'headers' => array(
