@@ -63,6 +63,8 @@ function discogs_album_shortcode($_attributes) {
 
 function discogs_album_shortcode_stylesheets() {
     $plugin_url = plugin_dir_url(__FILE__);
+
     wp_register_style('discogs-album-shortcode-style', $plugin_url . '../stylesheets/discogs-album.css');
+    wp_enqueue_style('discogs-album-shortcode-style');
 }
 ?>
