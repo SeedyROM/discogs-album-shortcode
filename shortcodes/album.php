@@ -2,14 +2,20 @@
 //
 // Shortcode to embed discogs albums
 //
+
 function shortcode_error($error) {
     return '[discogs-album]: Error "' . $error . '"';
 }
 
 function query_discogs_api($id) {
     $uri = 'https://api.discogs.com/releases/' . $id;
+    $token = 'RWqNCECRMOOEGGqrvhHxoYDmIWCqRVEbuNTJyMgG';
 
-    $request = wp_remote_get($uri);
+    $request = wp_remote_get($uri, array(
+        'headers' => array(
+            'Authorization' => 'Discogs token=' . $token
+        )
+    ));
     if(is_wp_error($request)) {
         return null;
     }
@@ -21,9 +27,16 @@ function query_discogs_api($id) {
 }
 
 function render_html($data) {
+    $album_heading = $data->title . ' by ' . $data->artists[0]->name;
+
     return <<<HTML
         <div class="discogs-album">
-            {$data->artists[0]->name}
+            <a href="{$data->uri}" target="_blank">
+                <img src="{$data->images[0]->uri}" alt="{$album_heading}">
+                <div>
+                    <strong>{$album_heading}</strong>
+                </div>
+            </a>
         </div>
 HTML;
 }
