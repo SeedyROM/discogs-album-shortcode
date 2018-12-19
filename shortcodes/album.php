@@ -29,6 +29,9 @@ function query_discogs_api($id) {
 function render_html($attributes, $album) {
     $album_heading = $album->title . ' by ' . $album->artists[0]->name;
     
+    if($attributes['href']) $album_href = $attributes['href'];
+    else $album_href = $album->uri;
+    
     if($attributes['size'] == null) {
         $width = 'inherit';
     } else {
@@ -37,7 +40,7 @@ function render_html($attributes, $album) {
 
     return <<<HTML
         <div class="discogs-album" style="width: {$width};">
-            <a href="{$album->uri}" target="_blank">
+            <a href="{$album_href}" target="_blank">
                 <img src="{$album->images[0]->uri}" alt="{$album_heading}">
                 <div class="heading">
                     <strong>{$album_heading}</strong>
@@ -51,7 +54,8 @@ function discogs_album_shortcode($_attributes) {
     // Set defaults
     $attributes = shortcode_atts(array(
         'release' => null,
-        'size' => null
+        'size' => null,
+        'href' => null
     ), $_attributes);
 
     if($attributes['release'] == null) {
